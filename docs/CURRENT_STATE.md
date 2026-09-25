@@ -2,38 +2,36 @@
 
 ## 目的
 
-Minecraft MOD 関連ツールをこのリポジトリで開発する。
-
-## 現在の状態
-
-- GitHub リポジトリ初期化済み
-- デフォルトブランチ: `main`
-- ChatGPT / Codex から GitHub の読み書きが可能
-- GitHub 連携テスト済み
-- 短期情報は GitHub、長期情報は Google Drive で管理
-- Codex から ChatGPT へ確認が必要な事項は Google Drive の「GPT確認待ち」に報告する運用を追加
-
-## 管理先
-
-長期記録:
-https://docs.google.com/document/d/1E67nRYuDWdySRcvqlI7xxkseWN0pEpThj7DLSvalhHQ/edit?usp=drivesdk
-
-GPT確認待ち:
-https://docs.google.com/document/d/1tLaKA_91ZhXpwTGkYApVf3cnP33jbmmUxDLvj1L6BvA/edit?usp=drivesdk
+Minecraft MOD 構成の確認・診断・可逆的な有効/無効切替を行う Windows 向けツールを開発する。
 
 ## 現在の作業
 
-まだ本体ツールの構成・実装は開始前。
+ブランチ: `feature/minecraft-mod-tool-mvp`
 
-## 次にやること
+Issue #2 の MVP 実装を進行中。Python 3.10+ / Tkinter の初期実装を追加した。
 
-- Minecraft MOD 用ツールの目的と機能を決める
-- 使用言語・GUI・対応 Minecraft バージョンなどを決める
-- 初期フォルダ構成を作る
-- 最小構成で起動できるところまで実装する
+- mods フォルダ直下の `.jar` と `.jar.disabled` を走査
+- Forge / NeoForge TOML、Fabric / Quilt JSON の代表的メタデータを抽出
+- 重複 MOD ID、不足依存、メタデータなし、破損 JAR の候補を表示
+- 検索、状態・ローダーフィルタ、確認付きの可逆リネーム、Markdown / JSON 出力
+- 自作の最小 JAR fixture を使ったユニットテスト 4 件が成功
 
-## 作業終了時
+## 残作業・制限
 
-- 現在状態をこのファイルへ反映
-- GPT確認が必要な内容があれば Drive の確認待ちへ報告
-- 長期保存すべきと確定した重要事項だけ Drive の長期記録へ整理
+Issue #2 の完了条件はまだ満たしていない。
+
+- 選択した Minecraft バージョンやインスタンスのローダーとの互換性判定
+- スキャンをバックグラウンドで行う応答性改善（現在は同期処理）
+- Minecraft / ローダー依存メタデータのバージョン範囲を正確に解釈する診断
+- Windows 上での GUI 起動確認
+- 上記を含む最終レビュー後の PR 作成
+
+## 起動・テスト
+
+```powershell
+$env:PYTHONPATH = "src"
+python -m maeron
+python -m unittest discover -s tests -v
+```
+
+実 MOD JAR はリポジトリへ追加しない。fixture はテスト時に一時生成する。
