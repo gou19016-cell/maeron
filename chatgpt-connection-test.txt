@@ -1,0 +1,4 @@
+ChatGPT GitHub connection test.
+
+Repository: gou19016-cell/maeron
+Purpose: verify branch creation, file creation, commit, read access, and pull request workflow.
