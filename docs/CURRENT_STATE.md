@@ -12,6 +12,32 @@ Minecraft MOD 関連ツールをこのリポジトリで開発する。
 - GitHub 連携テスト済み
 - 短期情報は GitHub、長期情報は Google Drive で管理
 - Codex から ChatGPT へ確認が必要な事項は Google Drive の「GPT確認待ち」に報告する運用を追加
+- Minecraft MOD管理・診断ツール MVP の実装タスクを GitHub Issue #2 に作成済み
+- 作業ブランチ `feature/minecraft-mod-tool-mvp` を作成済み
+
+## 現在の作業
+
+Codex に Minecraft MOD 管理・診断ツール MVP の実装を依頼する段階。
+
+依頼:
+https://github.com/gou19016-cell/maeron/issues/2
+
+作業ブランチ:
+`feature/minecraft-mod-tool-mvp`
+
+## MVPの中心機能
+
+- mods フォルダ走査
+- Forge / NeoForge / Fabric / Quilt のメタデータ解析
+- MOD名、ID、バージョン、ローダー、依存関係などの一覧表示
+- 重複MOD、複数バージョン、ローダー不一致、Minecraftバージョン不一致、不足依存関係などの検出
+- MODの安全な有効/無効切替
+- 検索・フィルタ
+- Markdown / JSON レポート出力
+- 数百MODでもUIを固めにくい構成
+- 自動テストとREADME
+
+詳細な完了条件は Issue #2 を参照。
 
 ## 管理先
 
@@ -21,16 +47,13 @@ https://docs.google.com/document/d/1E67nRYuDWdySRcvqlI7xxkseWN0pEpThj7DLSvalhHQ/
 GPT確認待ち:
 https://docs.google.com/document/d/1tLaKA_91ZhXpwTGkYApVf3cnP33jbmmUxDLvj1L6BvA/edit?usp=drivesdk
 
-## 現在の作業
-
-まだ本体ツールの構成・実装は開始前。
-
 ## 次にやること
 
-- Minecraft MOD 用ツールの目的と機能を決める
-- 使用言語・GUI・対応 Minecraft バージョンなどを決める
-- 初期フォルダ構成を作る
-- 最小構成で起動できるところまで実装する
+- Codex が `feature/minecraft-mod-tool-mvp` で実装開始
+- 小さな単位でコミット
+- テストを追加
+- 迷いや重要判断があれば GPT確認待ちへ報告
+- MVP完成時にPR作成
 
 ## 作業終了時
 
