@@ -1,0 +1,1 @@
+"""Maeron Minecraft mod manager."""
